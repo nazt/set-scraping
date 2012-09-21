@@ -15,9 +15,15 @@ jsdom.env({
   done: function(errors, window) {
     var $ = window.$
     $('script, img, iframe, a, .copyright, link, .webonly, .printonly').remove();
+    $('.yellowline, .redline').remove();
     $('.remark').parent().remove()
-    $('.submenu').parent().parent().parent().parent().parent().remove()
-    console.log($('table[width="615"]').html());
+    $('td.line').parent().remove()
+    // $('table[width="615"]').attr('width', '200')
+    // var wanted_table = $('table[width="615"]')
+    var wrapper_table = $('td.topic').parent().parent()
+    var real_table = $('table', wrapper_table).eq(14).attr('border', '1px')
+    wrapper_table.attr({ width: '800px' })
+    console.log(wrapper_table.parent().html())
     // console.log($('table.background').html())
     // console.log($('table[bgcolor=#FFFFFF]').html())
     // console.log("----BODY----")
